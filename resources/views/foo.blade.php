@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Foo</title>
+</head>
+<body>
+	<h1>Foo</h1>
+</body>
+</html>
