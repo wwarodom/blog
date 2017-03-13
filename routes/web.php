@@ -14,3 +14,8 @@ Route::get('/example', function() {
 	// echo "<h1>Foo</h1>";
 	return view('example.example');
 });
+
+Route::get('/example2', function() {
+	// echo "<h1>Foo</h1>";
+	return view('example.example2');
+});
