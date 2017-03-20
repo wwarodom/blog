@@ -4,18 +4,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/foo', function() {
-	// echo "<h1>Foo</h1>";
+Route::get('/foo', function() { 
 	return view('foo');
 });
 
-
-Route::get('/example', function() {
-	// echo "<h1>Foo</h1>";
-	return view('example.example');
+Route::get('/example', function() { 
+	return view('example.example')
+			->with('name','John');
 });
 
-Route::get('/example2', function() {
-	// echo "<h1>Foo</h1>";
+Route::get('/example2', function() { 
 	return view('example.example2');
 });
+
+Route::get('/cart', function() {
+	session(['cake' => '49.90']);
+	return view('cart.index');
+});
+
+Route::get('/cart/orderProduct','CartController@orderProduct');
