@@ -58,6 +58,14 @@
 						<span class="popbtn"><a class="arrow"></a></span>
 						<span class="price">$ {{ Request::cookie('cupPrice')}} </span>
 					</li>	
+					<li class="row">
+						<span class="quantity">50</span>
+						<span class="itemName">Icecream</span>
+						<span class="popbtn"><a class="arrow"></a></span>
+						<span class="price"> ${{$price}}
+							<input type="hidden" name="icecreamPrice" value="{{$price}}" />
+						</span>
+					</li>					
 					<li class="row totals">
 						<span class="itemName">Total:</span>
 						<span class="price">$164.43</span>

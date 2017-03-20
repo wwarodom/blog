@@ -13,7 +13,7 @@ class CartController extends Controller
 
 		Cookie::queue(cookie('cupPrice', '5',3600)); //name, value, minutes
 		Cookie::queue(cookie('bar', 'Bar Cookie value',3600));  
-	 	return view('cart.index');
+	 	return view('cart.index')->withPrice('20');
 	}
 
     public function orderProduct(Request $request) {    	
@@ -21,9 +21,11 @@ class CartController extends Controller
     	session()->forget('cake');
     	echo "<br/><br/>	";
     	var_dump(session()->all());
-
-    	echo $request->cookie('bar');
+    	echo "<br/><br/>	";
+    	echo Cookie::get('bar');
     	Cookie::queue(Cookie::forget('bar', 'Bar Cookie value',3600));
-    	echo $request->cookie('bar');
+    	echo Cookie::get('bar');
+		echo "<br/><br/>	";
+    	echo "<br/>Hidden field: Ice cream price: ".$request->input('icecreamPrice');
     }
 }
