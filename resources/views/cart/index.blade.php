@@ -56,7 +56,7 @@
 						<span class="quantity">50</span>
 						<span class="itemName">Party Cups</span>
 						<span class="popbtn"><a class="arrow"></a></span>
-						<span class="price">$5.00</span>
+						<span class="price">$ {{$cookie->getValue()}} </span>
 					</li>	
 					<li class="row totals">
 						<span class="itemName">Total:</span>
