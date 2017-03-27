@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use Redirect;
 
 class CalculatorController extends Controller
 {
@@ -11,12 +13,22 @@ class CalculatorController extends Controller
     }
 
     public function add(Request $request) {
-    	$num1 = $request->input('num1');
-    	$num2 = $request->input('num2');
-    	$result = $num1 + $num2;
-    	return view('calculator.index')
+
+    	$rules = [ 'num1' => 'required' ];
+    	$v = Validator::make($request->all(), $rules);
+
+		if ( $v->passes() ) {
+	    	$num1 = $request->input('num1');
+	    	$num2 = $request->input('num2');
+	    	$result = $num1 + $num2;
+
+   	    	return view('calculator.index')
     			->with('result',$result)
     			->with('num1',$num1)
     			->with('num2',$num2);	
+
+		} else {
+			return redirect('/calculator');
+		}
     }
 }
