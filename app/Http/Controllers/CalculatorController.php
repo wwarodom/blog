@@ -14,8 +14,14 @@ class CalculatorController extends Controller
 
     public function add(Request $request) {
 
-    	$rules = [ 'num1' => 'required' ];
-    	$v = Validator::make($request->all(), $rules);
+    	$rules = [ 'num1' => 'required|numeric' ];
+
+    	$messages = [
+    		'required' => 'กรุณากรอกข้อมูลครับ',
+    		'numeric' => 'กรุณากรอกข้อมูลเป็นตัวเลขด้วยครับ',
+]		;
+
+    	$v = Validator::make($request->all(), $rules,$messages);
 
 		if ( $v->passes() ) {
 	    	$num1 = $request->input('num1');
@@ -28,7 +34,8 @@ class CalculatorController extends Controller
     			->with('num2',$num2);	
 
 		} else {
-			return redirect('/calculator');
+			return redirect('/calculator')
+				->withErrors($v->messages());
 		}
     }
 }
