@@ -17,6 +17,9 @@ Route::get('/example2', function() {
 	return view('example.example2');
 });
 
+Route::get('/calculator','CalculatorController@index' );
+Route::post('/add','CalculatorController@add');
+
 Route::get('/cart','CartController@index');
 
 Route::get('/cart/orderProduct','CartController@orderProduct');
