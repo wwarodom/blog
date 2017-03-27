@@ -19,6 +19,7 @@ Route::get('/example2', function() {
 
 Route::get('/calculator','CalculatorController@index' );
 Route::post('/add','CalculatorController@add');
+Route::post('/val','CalculatorController@val');
 
 Route::get('/cart','CartController@index');
 

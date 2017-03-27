@@ -38,4 +38,23 @@ class CalculatorController extends Controller
 				->withErrors($v->messages());
 		}
     }
+
+    public function val(Request $request){
+    	$rules = [ 
+    		'email' => 'required|email',
+    		'flag' => 'required|boolean',
+    		'str' => 'required|alpha_dash|confirmed',
+    		'str_confirmation' => 'required|alpha_dash',
+    		'integer' => 'required|integer|between:10,100',
+    		'ip' => 'required|ip'
+    	];
+
+    	$v = Validator::make($request->all(), $rules);
+    	if ( $v->passes() )
+    		return view('calculator.index');
+    	else
+    		return redirect('/calculator')
+				->withErrors($v->messages());		
+
+    }
 }
