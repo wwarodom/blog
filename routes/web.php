@@ -1,5 +1,7 @@
 <?php
 
+Route::resource('boards','Boards\\BoardsController');
+
 Route::get('/', function () {
     return view('welcome');
 });
