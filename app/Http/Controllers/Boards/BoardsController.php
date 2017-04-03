@@ -9,7 +9,8 @@ use App\Board;
 class BoardsController extends Controller
 {
     public function index()    {
-        return view('board.index');
+        $boards = Board::all();
+        return view('board.index')->with('boards',$boards);
     }
 
     public function create()    {
