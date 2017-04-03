@@ -15,7 +15,7 @@
 	</div>
 	
 	{{csrf_field()}}	
-	<button type="submit" class="btn btn-primary"></button>
+	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
+<br>
 @endsection
