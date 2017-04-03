@@ -14,7 +14,7 @@ class BoardsController extends Controller
      */
     public function index()
     {
-        //
+        return view('board.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class BoardsController extends Controller
      */
     public function create()
     {
-        //
+        return view('board.create');
     }
 
     /**
