@@ -6,8 +6,14 @@
 	<div>
 		<h4> {{++$index}} : {{$item->title}}</h4>
 		<p>{{$item->body}}</p>
-		<a href="boards/{{$item->id}}">Show</a> | 
-		<a href="boards/{{$item->id}}/edit">Edit</a> 
+
+		<form method="post" action="boards/{{$item->id}}" class="form-inline">
+			<a href="boards/{{$item->id}}" class="btn btn-primary">Show</a> | 
+			<a href="boards/{{$item->id}}/edit" class="btn btn-success">Edit</a> |		
+			<input type="hidden" name="_method" value="Delete">
+			<button class="btn btn-danger">Delete</button> 
+			{{csrf_field()}}
+		</form>
 	</div>
 	<hr>
 @endforeach

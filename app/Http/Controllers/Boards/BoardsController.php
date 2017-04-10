@@ -45,6 +45,7 @@ class BoardsController extends Controller
 
     public function destroy($id)
     {
-        //
+        Board::destroy($id);
+        return redirect('boards');
     }
 }
