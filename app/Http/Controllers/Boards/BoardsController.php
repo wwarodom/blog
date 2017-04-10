@@ -8,9 +8,14 @@ use App\Board;
 
 class BoardsController extends Controller
 {
-    public function index()    {
-        $boards = Board::paginate(4);
-        return view('board.index')->with('boards',$boards);
+    public function index(Request $request)    {
+        $NUM_PAGE = 3;
+        $boards = Board::paginate($NUM_PAGE);
+        $page = $request->input('page');
+        $page = ($page != null)?$page:1;
+        return view('board.index')->with('boards',$boards)
+                                ->with('page',$page)
+                                ->with('NUM_PAGE',$NUM_PAGE);
     }
 
     public function create()    {

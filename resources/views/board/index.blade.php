@@ -4,7 +4,7 @@
 
 @foreach( $boards as  $index => $item )
 	<div>
-		<h4> {{++$index}} : {{$item->title}}</h4>
+		<h4> {{$NUM_PAGE*($page-1) + $index+1}} : {{$item->title}}</h4>
 		<p>{{$item->body}}</p>
 
 		<form method="post" action="boards/{{$item->id}}" class="form-inline">
