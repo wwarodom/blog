@@ -6,6 +6,7 @@
 	<div>
 		<h4> {{++$index}} : {{$item->title}}</h4>
 		<p>{{$item->body}}</p>
+		<a href="boards/{{$item->id}}">Show</a>
 	</div>
 	<hr>
 @endforeach
