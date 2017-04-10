@@ -8,6 +8,11 @@ use App\Board;
 
 class BoardsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(Request $request)    {
         $NUM_PAGE = 3;
         $boards = Board::paginate($NUM_PAGE);

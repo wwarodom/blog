@@ -26,3 +26,6 @@ Route::post('/val','CalculatorController@val');
 Route::get('/cart','CartController@index');
 
 Route::get('/cart/orderProduct','CartController@orderProduct');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
