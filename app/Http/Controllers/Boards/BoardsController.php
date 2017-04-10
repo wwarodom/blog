@@ -9,7 +9,7 @@ use App\Board;
 class BoardsController extends Controller
 {
     public function index()    {
-        $boards = Board::all();
+        $boards = Board::paginate(4);
         return view('board.index')->with('boards',$boards);
     }
 
