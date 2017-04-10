@@ -2,17 +2,17 @@
 @section('title','My board')
 @section('content')
 
-<form method="post" action="/boards">
-	<legend>New message</legend>
+<form method="post" action="/boards/{{$board->id}}">
+	<legend>Edit message</legend>
 	<div class="form-group">
 		<label for="title">Title</label>
-		<input type="text" name="title" class="form-control">
+		<input type="text" name="title" class="form-control" value="{{$board->title}}">
 	</div>		
 	<div class="form-group">
 		<label for="body">Body</label>
-		<textarea name="body" class="form-control" rows="4">Enter text here</textarea>
+		<textarea name="body" class="form-control" rows="4">{{$board->body}}</textarea>
 	</div>
-	
+	<input type="hidden" name="_method" value="PUT">
 	{{csrf_field()}}	
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
