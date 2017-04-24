@@ -8,14 +8,14 @@ use App\Board;
 
 class BoardsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     
     public function index(Request $request)    {
         $NUM_PAGE = 3;
-        $boards = Board::paginate($NUM_PAGE);
+        $boards = Board::orderBy('updated_at','desc')->paginate($NUM_PAGE);
         $page = $request->input('page');
         $page = ($page != null)?$page:1;
         return view('board.index')->with('boards',$boards)

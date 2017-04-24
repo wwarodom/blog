@@ -12,7 +12,11 @@
 		<label for="body">Body</label>
 		<textarea name="body" class="form-control" rows="4">Enter text here</textarea>
 	</div>
-	
+	<div>
+	<b>From: </b> {{ Auth::user()->name}} <br>
+	<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+	<input type="hidden" name="ip" value="{{Request::getClientIp()}}">
+	</div>
 	{{csrf_field()}}	
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>

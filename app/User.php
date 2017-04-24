@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Board;
 
 class User extends Authenticatable
 {
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','level',        
     ];
 
     /**
@@ -26,4 +27,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function board() {
+        return $this->hasMany(Board::class);
+    }
+
+    public function owns($user,$board) {
+        return $user->id == $board->user_id;
+    }
+
+    public function isSuperAdmin($user) {
+        return $user->level == 'admin';
+    }
 }

@@ -5,7 +5,9 @@
 	<div>
 		<h4>{{$board->title}}</h4>
 		<p>{{$board->body}}</p>
-	</div>
+
+			<b>From: </b> {{ Auth::user()->name}} <br>
+ 
 	<hr>
 
 <a href="/boards">Home</a>
