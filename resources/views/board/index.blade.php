@@ -7,6 +7,14 @@
 		<h4> {{$NUM_PAGE*($page-1) + $index+1}} : {{$item->title}}</h4>
 		<p>{{$item->body}}</p>
 
+		<div>
+			<b>Tags:</b>
+			@foreach($item->tags as $ctag)
+				<a href="/boards/searchTag/{{$ctag->id}}"> {{$ctag->name}}</a>
+			@endforeach
+		</div>
+		<br>
+		
 		<div class="pull-right">
 			Last update: {{$item->updated_at}}
 			<b>From: {{$item->user()->get()[0]->name}}</b> :: {{$item->ip}}
@@ -27,7 +35,10 @@
 
 {{ $boards->links() }}
 <br><br>
-<a href="boards/create">Create new message</a>
-<br>
+
+@if ( !Auth::guest() )
+	<a href="boards/create">Create new message</a>
+	<br>
+@endif
 
 @endsection

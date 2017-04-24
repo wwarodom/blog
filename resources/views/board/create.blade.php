@@ -12,6 +12,13 @@
 		<label for="body">Body</label>
 		<textarea name="body" class="form-control" rows="4">Enter text here</textarea>
 	</div>
+
+	@foreach ( $tags as $tag)
+		<label class="checkbox-inline">
+			<input type="checkbox" name="tags[]" value="{{$tag->id}}"> {{$tag->name}} &nbsp; 
+		</label>
+	@endforeach
+
 	<div>
 	<b>From: </b> {{ Auth::user()->name}} <br>
 	<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
