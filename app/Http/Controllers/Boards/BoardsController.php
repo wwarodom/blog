@@ -47,13 +47,21 @@ class BoardsController extends Controller
     public function edit($id)
     {
         $board = Board::findOrFail($id);
+        $tags = Tag::all();
         return view('board.edit')->with('board',$board)
-                                 ->with('id',$id);
+                                 ->with('id',$id)
+                                 ->with('tags',$tags);
     }
 
     public function update(Request $request, $id)
     {
         $board = Board::findOrFail($id);
+        $tags = $request->input('tags');         
+        
+        if ($tags == null)
+             $board->tags()->detach(Tag::all()); 
+        else
+            $board->tags()->sync($tags);      
         $board->update($request->all());
         return redirect('boards');
     }

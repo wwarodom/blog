@@ -13,6 +13,17 @@
 		<textarea name="body" class="form-control" rows="4">{{$board->body}}</textarea>
 	</div>
 
+	@foreach($tags as $tag)
+		<!--  {{$chk = ''}} -->
+		@foreach($board->tags as $ctag)
+			@if( $tag->id == $ctag->id)
+			<!-- {{$chk = 'checked'}} -->
+			@endif
+		@endforeach
+		<input type="checkbox" name="tags[]" value="{{$tag->id}}" {{$chk}}> {{$tag->name}} &nbsp;
+	@endforeach
+
+
 	<b>From: </b> {{ Auth::user()->name}} <br>
 	<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 	<input type="hidden" name="ip" value="{{Request::getClientIp()}}">
